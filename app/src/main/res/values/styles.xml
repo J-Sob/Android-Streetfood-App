@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="logo_text_style" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">@color/yellow</item>
+        <item name="fontFamily">@font/customfont</item>
+        <item name="android:textSize">40sp</item>
+    </style>
+
+    <style name="big_text_white" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">@color/white</item>
+        <item name="fontFamily">@font/customfont</item>
+        <item name="android:textSize">50sp</item>
+    </style>
+
+    <style name="primary_text_darkblue" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">@color/darkBlue</item>
+        <item name="fontFamily">@font/customfont</item>
+        <item name="android:textSize">30sp</item>
+    </style>
+
+    <style name="primary_text_yellow" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">@color/yellow</item>
+        <item name="fontFamily">@font/customfont</item>
+        <item name="android:textSize">30sp</item>
+    </style>
+
+    <style name="ToolbarYellowIcon" parent="Theme.AppCompat">
+        <item name="android:textColorSecondary">@color/yellow</item>
+    </style>
+</resources>

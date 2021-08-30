@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/darkBlue"
+    tools:context=".menu_fragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:gravity="center"
+                android:text="Menu"
+                android:textAppearance="@style/primary_text_yellow"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:gravity="center"
+                android:text="BURGERY"
+                android:textAppearance="@style/primary_text_yellow"
+                android:textSize="40sp"/>
+
+            <com.denzcoskun.imageslider.ImageSlider
+                android:id="@+id/imageSlider_burger"
+                style="@style/primary_text_darkblue"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                app:iss_selected_dot="@color/darkBlue"
+                app:iss_text_align="CENTER">
+
+            </com.denzcoskun.imageslider.ImageSlider>
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:gravity="center"
+                android:text="PANCAKES"
+                android:textAppearance="@style/primary_text_yellow"
+                android:textSize="40sp" />
+
+            <com.denzcoskun.imageslider.ImageSlider
+                android:id="@+id/imageSlider_pancakes"
+                style="@style/primary_text_darkblue"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                app:iss_selected_dot="@color/darkBlue"
+                app:iss_text_align="CENTER">
+
+            </com.denzcoskun.imageslider.ImageSlider>
+
+        </LinearLayout>
+    </ScrollView>
+</FrameLayout>
