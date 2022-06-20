@@ -18,7 +18,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 
-public class contact_fragment extends Fragment implements OnMapReadyCallback {
+public class ContactFragment extends Fragment implements OnMapReadyCallback {
     MapView mapView;
     GoogleMap map;
     @Override
