@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "476756565475",
+    "project_id": "streetfood-app-ee395",
+    "storage_bucket": "streetfood-app-ee395.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:476756565475:android:5f3f168314fabf8eead4d6",
+        "android_client_info": {
+          "package_name": "com.example.project"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "476756565475-cpm1ldenm5ngqkvu9c3q8eu0ug2ulc1b.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDQsNeCrB5d8wADy995SyPtLKZ-S6TlX-c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "476756565475-cpm1ldenm5ngqkvu9c3q8eu0ug2ulc1b.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -12,7 +12,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-public class gallery_fragment extends Fragment {
+public class GalleryFragment extends Fragment {
     ImageView imageView;
     TextView igLink;
 

@@ -18,7 +18,7 @@ import com.denzcoskun.imageslider.models.SlideModel;
 
 import java.util.ArrayList;
 
-public class menu_fragment extends Fragment {
+public class MenuFragment extends Fragment {
     ImageSlider imageSliderBurgers;
     ImageSlider imageSliderPancakes;
 
