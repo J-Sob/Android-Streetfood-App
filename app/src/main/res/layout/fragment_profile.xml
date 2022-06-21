@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/darkBlue"
+    tools:context=".ProfileFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <EditText
+            android:id="@+id/editTextProfilePhone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:background="@color/yellow"
+            android:ems="10"
+            android:enabled="false"
+            android:hint="Numer telefonu"
+            android:inputType="phone"
+            android:minHeight="48dp"
+            android:textAppearance="@style/primary_text_yellow"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editTextProfileAddress" />
+
+        <Button
+            android:id="@+id/buttonEdit"
+            android:layout_width="110dp"
+            android:layout_height="54dp"
+            android:layout_marginStart="76dp"
+            android:layout_marginTop="40dp"
+            android:background="@color/yellow"
+            android:text="Edytuj"
+            android:textAppearance="@style/primary_text_darkblue"
+            android:textColor="#455A64"
+            app:backgroundTint="@color/yellow"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editTextProfilePhone" />
+
+        <Button
+            android:id="@+id/buttonLogout"
+            android:layout_width="110dp"
+            android:layout_height="54dp"
+            android:layout_marginTop="36dp"
+            android:background="@color/yellow"
+            android:text="Wyloguj"
+            android:textAppearance="@style/primary_text_darkblue"
+            android:textColor="#455A64"
+            app:backgroundTint="@color/yellow"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/buttonEdit" />
+
+        <Button
+            android:id="@+id/buttonChangePassword"
+            android:layout_width="110dp"
+            android:layout_height="54dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginEnd="84dp"
+            android:background="@color/yellow"
+            android:text="Zmień hasło"
+            android:textAppearance="@style/primary_text_darkblue"
+            android:textColor="#455A64"
+            android:textSize="26sp"
+            app:backgroundTint="@color/yellow"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editTextProfilePhone" />
+
+        <EditText
+            android:id="@+id/editTextProfileEmail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="@color/yellow"
+            android:ems="10"
+            android:enabled="false"
+            android:hint="Email"
+            android:inputType="textPersonName"
+            android:minHeight="48dp"
+            android:textAppearance="@style/primary_text_yellow"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView8" />
+
+        <EditText
+            android:id="@+id/editTextProfileName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:background="@color/yellow"
+            android:ems="10"
+            android:enabled="false"
+            android:hint="Imie i nazwisko"
+            android:inputType="textPersonName"
+            android:minHeight="48dp"
+            android:textAppearance="@style/primary_text_yellow"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editTextProfileEmail" />
+
+        <EditText
+            android:id="@+id/editTextProfileAddress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:background="@color/yellow"
+            android:ems="10"
+            android:enabled="false"
+            android:hint="Adres"
+            android:inputType="textPersonName"
+            android:minHeight="48dp"
+            android:textAppearance="@style/primary_text_yellow"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editTextProfileName" />
+
+        <TextView
+            android:id="@+id/textView8"
+            android:layout_width="205dp"
+            android:layout_height="45dp"
+            android:layout_marginTop="40dp"
+            android:text="Profil użytkownika"
+            android:textAppearance="@style/logo_text_style"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.548"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>
