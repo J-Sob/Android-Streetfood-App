@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.zajecia6.dao.FirestoreCallback;
@@ -33,6 +34,7 @@ public class ProfileFragment extends Fragment {
     private Button buttonEdit;
     private Button buttonChangePassword;
     private Button buttonLogout;
+    private ProgressBar spinner;
     private FirebaseAuth mAuth;
     private FirestoreDAO dao;
 
@@ -47,6 +49,7 @@ public class ProfileFragment extends Fragment {
         buttonEdit = view.findViewById(R.id.buttonEdit);
         buttonChangePassword = view.findViewById(R.id.buttonChangePassword);
         buttonLogout = view.findViewById(R.id.buttonLogout);
+        spinner = view.findViewById(R.id.progressBarProfile);
         mAuth = FirebaseAuth.getInstance();
         dao = new FirestoreDAO();
         dao.getUserById(mAuth.getCurrentUser().getUid(), new FirestoreCallback() {
@@ -56,6 +59,7 @@ public class ProfileFragment extends Fragment {
                 editTextEmail.setText(user.getEmail());
                 editTextAddress.setText(user.getAddress());
                 editTextPhone.setText(user.getPhoneNumber());
+                spinner.setVisibility(View.GONE);
             }
         });
 
