@@ -73,9 +73,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 if(mAuth.getCurrentUser() == null){
                     getSupportFragmentManager().beginTransaction().replace(R.id.Fragment_container,new LoginRegisterFragment()).commit();
                 }else{
-                    mAuth.signOut();
-                    finish();
-                    startActivity(getIntent());
+                    getSupportFragmentManager().beginTransaction().replace(R.id.Fragment_container,new ProfileFragment()).commit();
                 }
                 break;
         }

@@ -100,6 +100,21 @@
                 app:layout_constraintTop_toBottomOf="@+id/editTextFullName" />
 
             <EditText
+                android:id="@+id/editTextPhone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@color/yellow"
+                android:ems="10"
+                android:hint="Numer telefonu"
+                android:inputType="phone"
+                android:minHeight="48dp"
+                android:textAppearance="@style/primary_text_yellow"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/editTextAddress" />
+
+            <EditText
                 android:id="@+id/editTextLoginPassword"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -128,7 +143,7 @@
                 android:textAppearance="@style/primary_text_yellow"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editTextAddress" />
+                app:layout_constraintTop_toBottomOf="@+id/editTextPhone" />
 
             <EditText
                 android:id="@+id/editTextConfirmPassword"
@@ -173,9 +188,10 @@
                 app:backgroundTint="@color/yellow"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.501"
+                app:layout_constraintHorizontal_bias="0.498"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editTextConfirmPassword" />
+                app:layout_constraintTop_toBottomOf="@+id/editTextConfirmPassword"
+                app:layout_constraintVertical_bias="1.0" />
 
             <View
                 android:id="@+id/divider"
@@ -186,6 +202,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/buttonLogin" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 
