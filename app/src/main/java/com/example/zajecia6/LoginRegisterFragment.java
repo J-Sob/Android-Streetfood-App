@@ -101,7 +101,8 @@ public class LoginRegisterFragment extends Fragment {
                                             User model = new User(editTextRegisterEmail.getText().toString(),
                                                     editTextFullname.getText().toString(),
                                                     editTextAddress.getText().toString(),
-                                                    editTextPhone.getText().toString());
+                                                    editTextPhone.getText().toString(),
+                                                    false);
 
                                             FirestoreDAO dao = new FirestoreDAO();
                                             try {
