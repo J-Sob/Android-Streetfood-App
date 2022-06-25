@@ -14,4 +14,7 @@
     <color name="blue">#0000FF</color>
     <color name="darkBlue">#000064</color>
     <color name="yellow">#fdc709</color>
+
+    <color name="sisiPrimary_logo">#00001a</color>
+
 </resources>
