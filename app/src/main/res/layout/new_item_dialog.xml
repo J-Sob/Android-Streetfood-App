@@ -11,11 +11,11 @@
         android:id="@+id/textView21"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Edytuj informacje"
+        android:text="Dodaj pozycje"
         android:textAppearance="@style/logo_text_style" />
 
     <EditText
-        android:id="@+id/editTextEditItemName"
+        android:id="@+id/editTextNewItemName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -38,7 +38,7 @@
         android:layout_marginTop="20dp">
 
         <AutoCompleteTextView
-            android:id="@+id/autoCompleteTextViewEditCategory"
+            android:id="@+id/autoCompleteTextViewCategory"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTintMode="add"
@@ -54,7 +54,7 @@
         android:orientation="horizontal">
 
         <EditText
-            android:id="@+id/editTextEditItemPrice"
+            android:id="@+id/editTextNewItemPrice"
             android:layout_width="152dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
@@ -80,9 +80,10 @@
     </LinearLayout>
 
     <Switch
-        android:id="@+id/switchAvailability"
+        android:id="@+id/switchNewItemAvailability"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:minHeight="48dp"
         android:switchMinWidth="60dp"
         android:text="Dostępność"
@@ -90,14 +91,39 @@
         android:textSize="23dp"
         android:thumbTint="@color/yellow" />
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/buttonAddItemImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            android:backgroundTint="@color/yellow"
+            android:text="Dodaj zdjęcie"
+            android:textAppearance="@style/primary_text_darkblue"
+            android:textColor="#455A64" />
+
+        <ImageView
+            android:id="@+id/imageViewItemPreview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/sisilogo_onyellow" />
+
+    </LinearLayout>
+
     <Button
-        android:id="@+id/buttonAcceptItemEdit"
+        android:id="@+id/buttonAcceptNewItem"
         android:layout_width="150dp"
         android:layout_height="54dp"
         android:layout_gravity="end"
         android:layout_marginTop="24dp"
         android:background="@color/yellow"
-        android:enabled="false"
+        android:enabled="true"
         android:text="Zatwierdź"
         android:textAppearance="@style/primary_text_darkblue"
         android:textColor="#455A64"

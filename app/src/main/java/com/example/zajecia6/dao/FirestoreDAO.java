@@ -6,6 +6,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 
 import com.example.zajecia6.callback.AllMenuItemsRetrievedCallback;
+import com.example.zajecia6.callback.MenuItemDeletedCallback;
 import com.example.zajecia6.callback.MenuItemRetrievedCallback;
 import com.example.zajecia6.callback.UserRetrievedCallback;
 import com.example.zajecia6.model.MenuItem;
@@ -17,6 +18,8 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -119,11 +122,47 @@ public class FirestoreDAO {
     }
 
     public void addMenuItem(MenuItem item){
-        firebaseFirestore.collection("menuItems")
-                .add(item)
-                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+        DocumentReference ref = firebaseFirestore.collection("menuItems").document();
+        String newId = ref.getId();
+        item.setId(newId);
+        ref.set(item)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
-                    public void onSuccess(DocumentReference documentReference) {}
+                    public void onSuccess(Void unused) {
+                        Toast.makeText(context, "Pozycja dodana", Toast.LENGTH_LONG).show();
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(context, e.getMessage(), Toast.LENGTH_LONG).show();
+                    }
+                });
+    }
+
+    public void deleteMenuItem(String itemId, String imageRef, MenuItemDeletedCallback menuItemDeletedCallback){
+        firebaseFirestore.collection("menuItems")
+                .document(itemId)
+                .delete()
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void unused) {
+                        FirebaseStorage.getInstance()
+                                .getReferenceFromUrl(imageRef)
+                                .delete()
+                                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                    @Override
+                                    public void onSuccess(Void unused) {
+                                        menuItemDeletedCallback.onItemDeleted();
+                                    }
+                                })
+                                .addOnFailureListener(new OnFailureListener() {
+                                    @Override
+                                    public void onFailure(@NonNull Exception e) {
+                                        Toast.makeText(context, e.getMessage(), Toast.LENGTH_LONG).show();
+                                    }
+                                });
+                    }
                 })
                 .addOnFailureListener(new OnFailureListener() {
                     @Override

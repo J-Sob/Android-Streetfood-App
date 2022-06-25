@@ -123,9 +123,9 @@ public class ProfileFragment extends Fragment {
         dialog.setCancelable(true);
         dialog.setContentView(R.layout.password_change_dialog);
 
-        EditText currentPassword = dialog.findViewById(R.id.editTextItemName);
-        EditText newPassword = dialog.findViewById(R.id.editTextItemPrice);
-        Button acceptChange = dialog.findViewById(R.id.buttonAcceptItemEdit);
+        EditText currentPassword = dialog.findViewById(R.id.editTextCurrentPassword);
+        EditText newPassword = dialog.findViewById(R.id.editTextNewPassword);
+        Button acceptChange = dialog.findViewById(R.id.buttonAcceptPasswordChange);
 
         acceptChange.setOnClickListener(new View.OnClickListener() {
             @Override
