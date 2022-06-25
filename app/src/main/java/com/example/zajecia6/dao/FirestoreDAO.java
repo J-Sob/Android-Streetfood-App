@@ -1,10 +1,12 @@
 package com.example.zajecia6.dao;
 
+import android.content.Context;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
 import com.example.zajecia6.callback.AllMenuItemsRetrievedCallback;
+import com.example.zajecia6.callback.MenuItemRetrievedCallback;
 import com.example.zajecia6.callback.UserRetrievedCallback;
 import com.example.zajecia6.model.MenuItem;
 import com.example.zajecia6.model.User;
@@ -21,8 +23,10 @@ import java.util.List;
 
 public class FirestoreDAO {
     private FirebaseFirestore firebaseFirestore;
+    private Context context;
 
-    public FirestoreDAO(){
+    public FirestoreDAO(Context context){
+        this.context = context;
         firebaseFirestore = FirebaseFirestore.getInstance();
     }
 
@@ -37,11 +41,7 @@ public class FirestoreDAO {
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-                        try {
-                            throw e;
-                        } catch (Exception exception) {
-                            exception.printStackTrace();
-                        }
+                        Toast.makeText(context, e.getMessage(), Toast.LENGTH_LONG).show();
                     }
                 });
     }
@@ -56,11 +56,7 @@ public class FirestoreDAO {
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
-                try {
-                    throw e;
-                } catch (Exception exception) {
-                    exception.printStackTrace();
-                }
+                Toast.makeText(context, e.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
     }
@@ -81,11 +77,43 @@ public class FirestoreDAO {
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-                        try {
-                            throw e;
-                        } catch (Exception exception) {
-                            exception.printStackTrace();
-                        }
+                        Toast.makeText(context, e.getMessage(), Toast.LENGTH_LONG).show();
+                    }
+                });
+    }
+
+    public void getMenuItem(String id, MenuItemRetrievedCallback menuItemRetrievedCallback){
+        firebaseFirestore.collection("menuItems")
+                .document(id)
+                .get()
+                .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                    @Override
+                    public void onSuccess(DocumentSnapshot documentSnapshot) {
+                        menuItemRetrievedCallback.onItemRetrieved(documentSnapshot.toObject(MenuItem.class));
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(context, e.getMessage(), Toast.LENGTH_LONG).show();
+                    }
+                });
+    }
+
+    public void editMenuItem(MenuItem item){
+        firebaseFirestore.collection("menuItems")
+                .document(item.getId())
+                .set(item)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void unused) {
+                        Toast.makeText(context, "Pozycja zaktualizowana", Toast.LENGTH_LONG).show();
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(context, e.getMessage(), Toast.LENGTH_LONG).show();
                     }
                 });
     }
@@ -100,11 +128,7 @@ public class FirestoreDAO {
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-                        try {
-                            throw e;
-                        } catch (Exception exception) {
-                            exception.printStackTrace();
-                        }
+                        Toast.makeText(context, e.getMessage(), Toast.LENGTH_LONG).show();
                     }
                 });
     }

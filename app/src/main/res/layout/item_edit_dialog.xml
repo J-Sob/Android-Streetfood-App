@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="350dp"
     android:layout_height="wrap_content"
     android:background="@color/darkBlue"
@@ -10,7 +11,7 @@
         android:id="@+id/textView19"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Zmiana hasła"
+        android:text="Edytuj informacje"
         android:textAppearance="@style/logo_text_style" />
 
     <EditText
@@ -20,28 +21,55 @@
         android:layout_marginTop="20dp"
         android:background="@color/yellow"
         android:ems="10"
-        android:hint="Stare hasło"
-        android:inputType="textPassword"
+        android:hint="Nazwa"
+        android:inputType="textPersonName"
         android:minHeight="48dp"
         android:textAppearance="@style/primary_text_yellow"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextPhone" />
 
-    <EditText
-        android:id="@+id/editTextItemPrice"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:background="@color/yellow"
-        android:ems="10"
-        android:hint="Nowe hasło"
-        android:inputType="textPassword"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/editTextItemPrice"
+            android:layout_width="152dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:background="@color/yellow"
+            android:ems="10"
+            android:hint="Cena"
+            android:inputType="number"
+            android:minHeight="48dp"
+            android:textAppearance="@style/primary_text_yellow"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editTextPhone" />
+
+        <TextView
+            android:id="@+id/textView20"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="20dp"
+            android:layout_weight="1"
+            android:text="PLN"
+            android:textAppearance="@style/logo_text_style" />
+    </LinearLayout>
+
+    <Switch
+        android:id="@+id/switchAvailability"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:minHeight="48dp"
-        android:textAppearance="@style/primary_text_yellow"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextPhone" />
+        android:switchMinWidth="60dp"
+        android:text="Dostępność"
+        android:textColor="@color/yellow"
+        android:textSize="23dp"
+        android:thumbTint="@color/yellow" />
 
     <Button
         android:id="@+id/buttonAcceptItemEdit"
@@ -50,6 +78,7 @@
         android:layout_gravity="end"
         android:layout_marginTop="24dp"
         android:background="@color/yellow"
+        android:enabled="false"
         android:text="Zatwierdź"
         android:textAppearance="@style/primary_text_darkblue"
         android:textColor="#455A64"

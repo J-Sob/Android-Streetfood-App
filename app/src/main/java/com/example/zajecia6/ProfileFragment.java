@@ -52,7 +52,7 @@ public class ProfileFragment extends Fragment {
         buttonLogout = view.findViewById(R.id.buttonLogout);
         spinner = view.findViewById(R.id.progressBarProfile);
         mAuth = FirebaseAuth.getInstance();
-        dao = new FirestoreDAO();
+        dao = new FirestoreDAO(getContext());
         dao.getUserById(mAuth.getCurrentUser().getUid(), new UserRetrievedCallback() {
             @Override
             public void onUserRetrieved(User user) {
@@ -123,9 +123,9 @@ public class ProfileFragment extends Fragment {
         dialog.setCancelable(true);
         dialog.setContentView(R.layout.password_change_dialog);
 
-        EditText currentPassword = dialog.findViewById(R.id.editTextCurrentPassword);
-        EditText newPassword = dialog.findViewById(R.id.editTextNewPassword);
-        Button acceptChange = dialog.findViewById(R.id.buttonAcceptChange);
+        EditText currentPassword = dialog.findViewById(R.id.editTextItemName);
+        EditText newPassword = dialog.findViewById(R.id.editTextItemPrice);
+        Button acceptChange = dialog.findViewById(R.id.buttonAcceptItemEdit);
 
         acceptChange.setOnClickListener(new View.OnClickListener() {
             @Override

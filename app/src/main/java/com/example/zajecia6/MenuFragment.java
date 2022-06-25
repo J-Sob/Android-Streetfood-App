@@ -42,7 +42,7 @@ public class MenuFragment extends Fragment {
         imageSliderBurgers = view.findViewById(R.id.imageSlider_burger);
         imageSliderPancakes = view.findViewById(R.id.imageSlider_pancakes);
         storageRef = FirebaseStorage.getInstance().getReference();
-        dao = new FirestoreDAO();
+        dao = new FirestoreDAO(getContext());
         dao.getAllMenuItems(new AllMenuItemsRetrievedCallback() {
             @Override
             public void onMenuItemsRetrieved(List<MenuItem> menuItems) {

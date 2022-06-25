@@ -34,7 +34,7 @@ public class AdminFragment extends Fragment {
         menuList = view.findViewById(R.id.listViewMenu);
         spinner = view.findViewById(R.id.progressBarAdmin);
         addItem = view.findViewById(R.id.buttonAddItem);
-        dao = new FirestoreDAO();
+        dao = new FirestoreDAO(getContext());
         dao.getAllMenuItems(new AllMenuItemsRetrievedCallback() {
             @Override
             public void onMenuItemsRetrieved(List<MenuItem> menuItems) {

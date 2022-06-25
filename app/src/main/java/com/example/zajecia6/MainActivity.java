@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         setContentView(R.layout.activity_main);
         PACKAGE_NAME = getPackageName();
         mAuth = FirebaseAuth.getInstance();
-        dao = new FirestoreDAO();
+        dao = new FirestoreDAO(getApplicationContext());
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);

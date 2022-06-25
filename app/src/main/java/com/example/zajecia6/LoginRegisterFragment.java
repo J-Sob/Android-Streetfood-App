@@ -104,7 +104,7 @@ public class LoginRegisterFragment extends Fragment {
                                                     editTextPhone.getText().toString(),
                                                     false);
 
-                                            FirestoreDAO dao = new FirestoreDAO();
+                                            FirestoreDAO dao = new FirestoreDAO(getContext());
                                             try {
                                                 dao.addUser(user.getUid(), model);
                                                 Toast.makeText(LoginRegisterFragment.this.getContext(), "Konto utworzone.", Toast.LENGTH_SHORT).show();
