@@ -5,12 +5,14 @@ public class User {
     private String fullName;
     private String address;
     private String phoneNumber;
+    private boolean admin;
 
-    public User(String email, String fullName, String address, String phoneNumber) {
+    public User(String email, String fullName, String address, String phoneNumber, boolean admin) {
         this.email = email;
         this.fullName = fullName;
         this.address = address;
         this.phoneNumber = phoneNumber;
+        this.admin = admin;
     }
 
     public User() {
@@ -46,5 +48,13 @@ public class User {
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
+    }
+
+    public boolean isAdmin() {
+        return admin;
+    }
+
+    public void setAdmin(boolean admin) {
+        this.admin = admin;
     }
 }

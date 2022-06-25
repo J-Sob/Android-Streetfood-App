@@ -3,17 +3,24 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Projects/Android/Android-Streetfood-App/app/src/main/res/drawable-anydpi/ic_admin.xml" value="0.1" />
         <entry key="..\:/Projects/Android/Android-Streetfood-App/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.138" />
+        <entry key="..\:/Projects/Android/Android-Streetfood-App/app/src/main/res/drawable-xxhdpi/ic_admin.xml" value="0.1" />
         <entry key="..\:/Projects/Android/Android-Streetfood-App/app/src/main/res/drawable/ic_food.xml" value="0.138" />
         <entry key="..\:/Projects/Android/Android-Streetfood-App/app/src/main/res/drawable/ic_launcher_background.xml" value="0.138" />
         <entry key="..\:/Projects/Android/Android-Streetfood-App/app/src/main/res/drawable/ic_profile_background.xml" value="0.138" />
         <entry key="..\:/Projects/Android/Android-Streetfood-App/app/src/main/res/drawable/ic_profile_foreground.xml" value="0.138" />
         <entry key="..\:/Projects/Android/Android-Streetfood-App/app/src/main/res/drawable/ic_user.xml" value="0.138" />
         <entry key="..\:/Projects/Android/Android-Streetfood-App/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Projects/Android/Android-Streetfood-App/app/src/main/res/layout/category_dropdown_item.xml" value="0.25416666666666665" />
         <entry key="..\:/Projects/Android/Android-Streetfood-App/app/src/main/res/layout/contact_fragment.xml" value="0.27717391304347827" />
+        <entry key="..\:/Projects/Android/Android-Streetfood-App/app/src/main/res/layout/fragment_admin.xml" value="0.2" />
         <entry key="..\:/Projects/Android/Android-Streetfood-App/app/src/main/res/layout/fragment_login_register.xml" value="0.33" />
-        <entry key="..\:/Projects/Android/Android-Streetfood-App/app/src/main/res/layout/fragment_profile.xml" value="0.25" />
+        <entry key="..\:/Projects/Android/Android-Streetfood-App/app/src/main/res/layout/fragment_profile.xml" value="0.13703703703703704" />
         <entry key="..\:/Projects/Android/Android-Streetfood-App/app/src/main/res/layout/header.xml" value="0.27717391304347827" />
+        <entry key="..\:/Projects/Android/Android-Streetfood-App/app/src/main/res/layout/item_edit_dialog.xml" value="0.264" />
+        <entry key="..\:/Projects/Android/Android-Streetfood-App/app/src/main/res/layout/menu_list_item.xml" value="0.25416666666666665" />
+        <entry key="..\:/Projects/Android/Android-Streetfood-App/app/src/main/res/layout/new_item_dialog.xml" value="0.25416666666666665" />
         <entry key="..\:/Projects/Android/Android-Streetfood-App/app/src/main/res/layout/password_change_dialog.xml" value="0.31023550724637683" />
         <entry key="..\:/Projects/Android/Android-Streetfood-App/app/src/main/res/menu/drawer_menu.xml" value="0.35104166666666664" />
         <entry key="..\:/Projects/Android/Android-Streetfood-App/app/src/main/res/mipmap-anydpi-v26/ic_profile.xml" value="0.1" />

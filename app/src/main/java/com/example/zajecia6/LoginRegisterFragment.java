@@ -101,9 +101,10 @@ public class LoginRegisterFragment extends Fragment {
                                             User model = new User(editTextRegisterEmail.getText().toString(),
                                                     editTextFullname.getText().toString(),
                                                     editTextAddress.getText().toString(),
-                                                    editTextPhone.getText().toString());
+                                                    editTextPhone.getText().toString(),
+                                                    false);
 
-                                            FirestoreDAO dao = new FirestoreDAO();
+                                            FirestoreDAO dao = new FirestoreDAO(getContext());
                                             try {
                                                 dao.addUser(user.getUid(), model);
                                                 Toast.makeText(LoginRegisterFragment.this.getContext(), "Konto utworzone.", Toast.LENGTH_SHORT).show();

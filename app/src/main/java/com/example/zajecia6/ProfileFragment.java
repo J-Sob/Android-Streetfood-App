@@ -16,7 +16,7 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import com.example.zajecia6.dao.FirestoreCallback;
+import com.example.zajecia6.callback.UserRetrievedCallback;
 import com.example.zajecia6.dao.FirestoreDAO;
 import com.example.zajecia6.model.User;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -37,6 +37,7 @@ public class ProfileFragment extends Fragment {
     private ProgressBar spinner;
     private FirebaseAuth mAuth;
     private FirestoreDAO dao;
+    private boolean isAdmin = false;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -51,14 +52,15 @@ public class ProfileFragment extends Fragment {
         buttonLogout = view.findViewById(R.id.buttonLogout);
         spinner = view.findViewById(R.id.progressBarProfile);
         mAuth = FirebaseAuth.getInstance();
-        dao = new FirestoreDAO();
-        dao.getUserById(mAuth.getCurrentUser().getUid(), new FirestoreCallback() {
+        dao = new FirestoreDAO(getContext());
+        dao.getUserById(mAuth.getCurrentUser().getUid(), new UserRetrievedCallback() {
             @Override
             public void onUserRetrieved(User user) {
                 editTextName.setText(user.getFullName());
                 editTextEmail.setText(user.getEmail());
                 editTextAddress.setText(user.getAddress());
                 editTextPhone.setText(user.getPhoneNumber());
+                isAdmin = user.isAdmin();
                 spinner.setVisibility(View.GONE);
             }
         });
@@ -93,7 +95,8 @@ public class ProfileFragment extends Fragment {
                             User u = new User(editTextEmail.getText().toString(),
                                     editTextName.getText().toString(),
                                     editTextAddress.getText().toString(),
-                                    editTextPhone.getText().toString());
+                                    editTextPhone.getText().toString(),
+                                    isAdmin);
                             dao.addUser(mAuth.getCurrentUser().getUid(), u);
                             Toast.makeText(ProfileFragment.this.getContext(), "Informacje zaktualizowane", Toast.LENGTH_SHORT).show();
                             editTextAddress.setEnabled(false);
@@ -122,7 +125,7 @@ public class ProfileFragment extends Fragment {
 
         EditText currentPassword = dialog.findViewById(R.id.editTextCurrentPassword);
         EditText newPassword = dialog.findViewById(R.id.editTextNewPassword);
-        Button acceptChange = dialog.findViewById(R.id.buttonAcceptChange);
+        Button acceptChange = dialog.findViewById(R.id.buttonAcceptPasswordChange);
 
         acceptChange.setOnClickListener(new View.OnClickListener() {
             @Override
