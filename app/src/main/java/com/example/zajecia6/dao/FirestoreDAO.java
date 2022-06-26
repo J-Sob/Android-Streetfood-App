@@ -8,8 +8,10 @@ import androidx.annotation.NonNull;
 import com.example.zajecia6.callback.AllMenuItemsRetrievedCallback;
 import com.example.zajecia6.callback.MenuItemDeletedCallback;
 import com.example.zajecia6.callback.MenuItemRetrievedCallback;
+import com.example.zajecia6.callback.OrderPlacedCallback;
 import com.example.zajecia6.callback.UserRetrievedCallback;
 import com.example.zajecia6.model.MenuItem;
+import com.example.zajecia6.model.Order;
 import com.example.zajecia6.model.User;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -31,6 +33,10 @@ public class FirestoreDAO {
     public FirestoreDAO(Context context){
         this.context = context;
         firebaseFirestore = FirebaseFirestore.getInstance();
+    }
+
+    public FirebaseFirestore getFirebaseFirestore() {
+        return firebaseFirestore;
     }
 
     public void addUser(String id, User user){
@@ -162,6 +168,25 @@ public class FirestoreDAO {
                                         Toast.makeText(context, e.getMessage(), Toast.LENGTH_LONG).show();
                                     }
                                 });
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(context, e.getMessage(), Toast.LENGTH_LONG).show();
+                    }
+                });
+    }
+
+    public void addOrder(Order order, OrderPlacedCallback callback){
+        DocumentReference ref = firebaseFirestore.collection("orders").document();
+        String newId = ref.getId();
+        order.setId(newId);
+        ref.set(order)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void unused) {
+                        callback.onOrderPlaced();
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {

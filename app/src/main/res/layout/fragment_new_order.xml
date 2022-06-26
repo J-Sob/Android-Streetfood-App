@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/frameLayout2"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/darkBlue"
+    tools:context=".NewOrderFragment">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:contentDescription="@string/appbar_scrolling_view_behavior"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="-35dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView22"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:padding="20dp"
+                android:text="Nowe zamówienie"
+                android:textAppearance="@style/logo_text_style" />
+
+            <View
+                android:id="@+id/divider2"
+                android:layout_width="350dp"
+                android:layout_height="3dp"
+                android:layout_gravity="center"
+                android:background="@color/yellow" />
+
+            <TextView
+                android:id="@+id/textView23"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:padding="15dp"
+                android:text="Wybierz pozycje"
+                android:textAppearance="@style/primary_text_yellow" />
+
+            <ListView
+                android:id="@+id/listViewOrderMenu"
+                android:layout_width="match_parent"
+                android:layout_height="345dp"
+                android:layout_marginBottom="20dp" />
+
+            <View
+                android:id="@+id/divider3"
+                android:layout_width="350dp"
+                android:layout_height="3dp"
+                android:layout_gravity="center"
+                android:background="@color/yellow" />
+
+            <TextView
+                android:id="@+id/textView24"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:padding="15dp"
+                android:text="Informacje"
+                android:textAppearance="@style/primary_text_yellow" />
+
+            <EditText
+                android:id="@+id/editTextOrderAddress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="10dp"
+                android:background="@color/yellow"
+                android:ems="10"
+                android:hint="Adres"
+                android:inputType="textPersonName"
+                android:minHeight="48dp"
+                android:textAppearance="@style/primary_text_yellow" />
+
+            <EditText
+                android:id="@+id/editTextOrderPhone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="10dp"
+                android:background="@color/yellow"
+                android:ems="10"
+                android:hint="Numer telefonu"
+                android:inputType="phone"
+                android:minHeight="48dp"
+                android:textAppearance="@style/primary_text_yellow" />
+
+            <EditText
+                android:id="@+id/editTextAdditionalInfo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="10dp"
+                android:background="@color/yellow"
+                android:ems="10"
+                android:gravity="start"
+                android:hint="Dodatkowe informacje (opcjonalne)"
+                android:lines="3"
+                android:inputType="textMultiLine"
+                android:minHeight="48dp"
+                android:textAppearance="@style/primary_text_yellow" />
+
+            <View
+                android:id="@+id/divider4"
+                android:layout_width="350dp"
+                android:layout_height="3dp"
+                android:layout_gravity="center"
+                android:background="@color/yellow" />
+
+            <TextView
+                android:id="@+id/textView25"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:padding="15dp"
+                android:text="Podsumowanie"
+                android:textAppearance="@style/primary_text_yellow" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textView26"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:padding="5dp"
+                    android:layout_marginLeft="25dp"
+                    android:text="Suma: "
+                    android:textAppearance="@style/primary_text_yellow" />
+
+                <TextView
+                    android:id="@+id/textViewSum"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:padding="5dp"
+                    android:text="0"
+                    android:textAppearance="@style/primary_text_yellow" />
+
+                <TextView
+                    android:id="@+id/textView27"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:padding="5dp"
+                    android:text="zł"
+                    android:textAppearance="@style/primary_text_yellow" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textView28"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:padding="5dp"
+                    android:layout_marginLeft="25dp"
+                    android:text="Dostawa: "
+                    android:textAppearance="@style/primary_text_yellow" />
+
+                <TextView
+                    android:id="@+id/textViewDelivery"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:padding="5dp"
+                    android:text="9.99"
+                    android:textAppearance="@style/primary_text_yellow" />
+
+                <TextView
+                    android:id="@+id/textView29"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:padding="5dp"
+                    android:text="zł"
+                    android:textAppearance="@style/primary_text_yellow" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textView30"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:padding="5dp"
+                    android:layout_marginLeft="25dp"
+                    android:text="Cena całkowita: "
+                    android:textAppearance="@style/primary_text_yellow" />
+
+                <TextView
+                    android:id="@+id/textViewTotalPrice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:padding="5dp"
+                    android:text="0"
+                    android:textAppearance="@style/primary_text_yellow" />
+
+                <TextView
+                    android:id="@+id/textView31"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:padding="5dp"
+                    android:text="zł"
+                    android:textAppearance="@style/primary_text_yellow" />
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/buttonPlaceOrder"
+                android:layout_width="wrap_content"
+                android:layout_height="54dp"
+                android:layout_marginTop="20dp"
+                android:layout_gravity="center"
+                android:layout_marginBottom="20dp"
+                android:background="@color/yellow"
+                android:text="Złóż zamówienie"
+                android:textAppearance="@style/primary_text_darkblue"
+                android:textColor="#455A64"
+                app:backgroundTint="@color/yellow" />
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

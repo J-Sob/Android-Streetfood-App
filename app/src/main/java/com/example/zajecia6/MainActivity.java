@@ -44,16 +44,18 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         Menu menu = navigationView.getMenu();
         if(mAuth.getCurrentUser() == null){
-            menu.getItem(0).setTitle("Zaloguj się lub utwórz konto");
+            menu.getItem(1).setTitle("Zaloguj się lub utwórz konto");
         }else{
-            menu.getItem(0).setTitle("Twoje konto");
+            menu.getItem(1).setTitle("Twoje konto");
             dao.getUserById(mAuth.getCurrentUser().getUid(), new UserRetrievedCallback() {
                 @Override
                 public void onUserRetrieved(User user) {
                     if(user.isAdmin()){
-                        menu.getItem(1).setVisible(true);
+                        menu.getItem(2).setVisible(true);
+                        menu.getItem(3).setTitle("Zamówienia");
                     }else{
-                        menu.getItem(1).setVisible(false);
+                        menu.getItem(2).setVisible(false);
+                        menu.getItem(3).setTitle("Złóż zamówienie");
                     }
                 }
             });
@@ -96,6 +98,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
             case R.id.admin:
                 getSupportFragmentManager().beginTransaction().replace(R.id.Fragment_container,new AdminFragment()).commit();
+                break;
+            case R.id.order:
+                if("Złóż zamówienie".equals(item.getTitle().toString())){
+                    getSupportFragmentManager().beginTransaction().replace(R.id.Fragment_container,new NewOrderFragment()).commit();
+                }else{
+
+                }
                 break;
         }
         drawerLayout.closeDrawer(GravityCompat.START);
