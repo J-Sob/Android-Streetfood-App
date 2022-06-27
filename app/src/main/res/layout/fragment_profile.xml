@@ -23,6 +23,7 @@
             android:inputType="phone"
             android:minHeight="48dp"
             android:textAppearance="@style/primary_text_yellow"
+            android:textColor="@color/backgroundcolor"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/editTextProfileAddress" />
@@ -83,6 +84,7 @@
             android:inputType="textPersonName"
             android:minHeight="48dp"
             android:textAppearance="@style/primary_text_yellow"
+            android:textColor="@color/backgroundcolor"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView8" />
@@ -99,6 +101,7 @@
             android:inputType="textPersonName"
             android:minHeight="48dp"
             android:textAppearance="@style/primary_text_yellow"
+            android:textColor="@color/backgroundcolor"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/editTextProfileEmail" />
@@ -115,6 +118,7 @@
             android:inputType="textPersonName"
             android:minHeight="48dp"
             android:textAppearance="@style/primary_text_yellow"
+            android:textColor="@color/backgroundcolor"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/editTextProfileName" />

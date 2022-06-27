@@ -25,6 +25,7 @@
         android:inputType="textPersonName"
         android:minHeight="48dp"
         android:textAppearance="@style/primary_text_yellow"
+        android:textColor="@color/backgroundcolor"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextPhone" />
@@ -41,11 +42,12 @@
             android:id="@+id/autoCompleteTextViewEditCategory"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTintMode="add"
             android:backgroundTint="@color/textcolor"
+            android:backgroundTintMode="add"
             android:inputType="none"
             android:padding="0dp"
-            android:textAppearance="@style/primary_text_yellow"/>
+            android:textAppearance="@style/primary_text_yellow"
+            android:textColor="@color/backgroundcolor" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <LinearLayout
@@ -64,6 +66,7 @@
             android:inputType="number"
             android:minHeight="48dp"
             android:textAppearance="@style/primary_text_yellow"
+            android:textColor="@color/backgroundcolor"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/editTextPhone" />

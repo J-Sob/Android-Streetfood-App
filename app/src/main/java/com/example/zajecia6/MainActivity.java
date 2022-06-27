@@ -5,6 +5,7 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.ContextCompat;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
@@ -13,6 +14,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.example.zajecia6.callback.UserRetrievedCallback;
 import com.example.zajecia6.dao.FirestoreDAO;
@@ -87,6 +89,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                             AppCompatDelegate
                                     .MODE_NIGHT_YES);
             menu.findItem(R.id.contrast_mode).setTitle("Tryb domyślny").setIcon(R.drawable.ic_lightmode);
+            View header = navigationView.getHeaderView(0);
+            //header.findViewById(R.id.imageView).setVisibility(View.INVISIBLE);
+            header.findViewById(R.id.imageView2).setVisibility(View.VISIBLE);
+
         }
         else {
             AppCompatDelegate
