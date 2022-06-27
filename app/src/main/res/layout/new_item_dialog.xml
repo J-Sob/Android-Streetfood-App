@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="350dp"
     android:layout_height="wrap_content"
-    android:background="@color/darkBlue"
+    android:background="@color/backgroundcolor"
     android:orientation="vertical">
 
     <TextView
@@ -19,7 +19,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:background="@color/yellow"
+        android:background="@color/textcolor"
         android:ems="10"
         android:hint="Nazwa"
         android:inputType="textPersonName"
@@ -42,7 +42,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTintMode="add"
-            android:backgroundTint="@color/yellow"
+            android:backgroundTint="@color/textcolor"
             android:inputType="none"
             android:padding="0dp"
             android:textAppearance="@style/primary_text_yellow"/>
@@ -58,7 +58,7 @@
             android:layout_width="152dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:background="@color/yellow"
+            android:background="@color/textcolor"
             android:ems="10"
             android:hint="Cena"
             android:inputType="number"
@@ -87,9 +87,9 @@
         android:minHeight="48dp"
         android:switchMinWidth="60dp"
         android:text="Dostępność"
-        android:textColor="@color/yellow"
+        android:textColor="@color/textcolor"
         android:textSize="23dp"
-        android:thumbTint="@color/yellow" />
+        android:thumbTint="@color/textcolor" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -102,7 +102,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:layout_gravity="center"
-            android:backgroundTint="@color/yellow"
+            android:backgroundTint="@color/textcolor"
             android:text="Dodaj zdjęcie"
             android:textAppearance="@style/primary_text_darkblue"
             android:textColor="#455A64" />
@@ -122,12 +122,12 @@
         android:layout_height="54dp"
         android:layout_gravity="end"
         android:layout_marginTop="24dp"
-        android:background="@color/yellow"
+        android:background="@color/textcolor"
         android:enabled="true"
         android:text="Zatwierdź"
         android:textAppearance="@style/primary_text_darkblue"
         android:textColor="#455A64"
-        app:backgroundTint="@color/yellow"
+        app:backgroundTint="@color/textcolor"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"

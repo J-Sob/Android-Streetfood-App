@@ -3,11 +3,13 @@ package com.example.zajecia6;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -69,6 +71,30 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             navigationView.setCheckedItem(R.id.home);
         }
 
+        SharedPreferences sharedPreferences
+                = getSharedPreferences(
+                        "sharedPrefs", MODE_PRIVATE);
+        final SharedPreferences.Editor editor
+                = sharedPreferences.edit();
+        final boolean isDarkModeOn
+                = sharedPreferences
+                .getBoolean(
+                        "isDarkModeOn", false);
+
+        if(isDarkModeOn) {
+            AppCompatDelegate
+                    .setDefaultNightMode(
+                            AppCompatDelegate
+                                    .MODE_NIGHT_YES);
+            menu.findItem(R.id.contrast_mode).setTitle("Tryb domyślny").setIcon(R.drawable.ic_lightmode);
+        }
+        else {
+            AppCompatDelegate
+                    .setDefaultNightMode(
+                            AppCompatDelegate
+                                    .MODE_NIGHT_NO);
+            menu.findItem(R.id.contrast_mode).setTitle("Tryb kontrastu");
+        }
     }
 
 
@@ -94,6 +120,38 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     getSupportFragmentManager().beginTransaction().replace(R.id.Fragment_container,new ProfileFragment()).commit();
                 }
                 break;
+            case R.id.contrast_mode:
+
+                SharedPreferences sharedPreferences
+                        = getSharedPreferences(
+                        "sharedPrefs", MODE_PRIVATE);
+                final SharedPreferences.Editor editor
+                        = sharedPreferences.edit();
+                final boolean isDarkModeOn
+                        = sharedPreferences
+                        .getBoolean(
+                                "isDarkModeOn", false);
+
+               if(isDarkModeOn) {
+                   AppCompatDelegate
+                           .setDefaultNightMode(
+                                   AppCompatDelegate
+                                           .MODE_NIGHT_NO);
+                   editor.putBoolean(
+                           "isDarkModeOn", false);
+                   editor.apply();
+               }
+               else {
+                   AppCompatDelegate
+                           .setDefaultNightMode(
+                                   AppCompatDelegate
+                                           .MODE_NIGHT_YES);
+                   editor.putBoolean(
+                           "isDarkModeOn", true);
+                   editor.apply();
+               }
+                break;
+
             case R.id.admin:
                 getSupportFragmentManager().beginTransaction().replace(R.id.Fragment_container,new AdminFragment()).commit();
                 break;
@@ -110,5 +168,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             super.onBackPressed();
         }
     }
+
 
 }
