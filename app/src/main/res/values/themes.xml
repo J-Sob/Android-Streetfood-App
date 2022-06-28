@@ -2,8 +2,8 @@
     <!-- Base application theme. -->
     <style name="Theme.Zajecia6" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/darkBlue</item>
-        <item name="colorPrimaryVariant">@color/darkBlue</item>
+        <item name="colorPrimary">@color/backgroundcolor</item>
+        <item name="colorPrimaryVariant">@color/backgroundcolor</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/teal_200</item>
@@ -15,8 +15,8 @@
     </style>
     <style name="SplashTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
         <item name="android:windowBackground">@drawable/splash_background</item>
-        <item name="colorPrimary">@color/darkBlue</item>
-        <item name="colorPrimaryDark">@color/darkBlue</item>
+        <item name="colorPrimary">@color/backgroundcolor</item>
+        <item name="colorPrimaryDark">@color/backgroundcolor</item>
         <item name="colorAccent">@color/white</item>
         <item name="android:statusBarColor" tools:targetApi="lollipop">@color/sisiPrimary_logo</item>
     </style>

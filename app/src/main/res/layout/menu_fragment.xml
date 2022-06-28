@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/darkBlue"
+    android:background="@color/backgroundcolor"
     tools:context=".MenuFragment">
 
     <ScrollView
@@ -39,7 +39,7 @@
                 style="@style/primary_text_darkblue"
                 android:layout_width="match_parent"
                 android:layout_height="300dp"
-                app:iss_selected_dot="@color/darkBlue"
+                app:iss_selected_dot="@color/backgroundcolor"
                 app:iss_text_align="CENTER">
 
             </com.denzcoskun.imageslider.ImageSlider>
@@ -58,7 +58,7 @@
                 style="@style/primary_text_darkblue"
                 android:layout_width="match_parent"
                 android:layout_height="300dp"
-                app:iss_selected_dot="@color/darkBlue"
+                app:iss_selected_dot="@color/backgroundcolor"
                 app:iss_text_align="CENTER">
 
             </com.denzcoskun.imageslider.ImageSlider>

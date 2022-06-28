@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/darkBlue"
+    android:background="@color/backgroundcolor"
     tools:context=".HomeFragment">
 
     <ScrollView
@@ -23,12 +23,12 @@
                 android:gravity="center"
                 android:text="NAJLEPSZE I NAJWIĘKSZE BURGERY NA ŚWIECIE"
                 android:textAppearance="@style/big_text_white"
-                android:textColor="@color/yellow"/>
+                android:textColor="@color/textcolor"/>
 
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="300dp"
-                android:background="@color/yellow">
+                android:background="@color/textcolor">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
@@ -40,7 +40,7 @@
                         android:layout_height="141dp"
                         android:layout_marginStart="16dp"
                         android:layout_marginLeft="16dp"
-                        android:background="@color/darkBlue"
+                        android:background="@color/backgroundcolor"
                         android:gravity="center"
                         android:text="TERAZ JESTEŚMY RÓWNIEŻ W PŁOŃSKU"
                         android:textAppearance="@style/primary_text_yellow"
@@ -56,7 +56,7 @@
                         android:layout_height="46dp"
                         android:layout_marginStart="16dp"
                         android:layout_marginLeft="16dp"
-                        android:background="@color/darkBlue"
+                        android:background="@color/backgroundcolor"
                         android:gravity="center"
                         android:text="ZAMÓW: 506 969 049"
                         android:textAppearance="@style/primary_text_yellow"
