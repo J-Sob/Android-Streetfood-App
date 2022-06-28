@@ -23,6 +23,7 @@ import com.example.zajecia6.dao.FirestoreDAO;
 import com.example.zajecia6.model.User;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
+
 import com.paypal.checkout.PayPalCheckout;
 import com.paypal.checkout.config.CheckoutConfig;
 import com.paypal.checkout.config.Environment;
@@ -30,6 +31,7 @@ import com.paypal.checkout.config.PaymentButtonIntent;
 import com.paypal.checkout.config.SettingsConfig;
 import com.paypal.checkout.createorder.CurrencyCode;
 import com.paypal.checkout.createorder.UserAction;
+
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -109,9 +111,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                             AppCompatDelegate
                                     .MODE_NIGHT_YES);
             menu.findItem(R.id.contrast_mode).setTitle("Tryb domyślny").setIcon(R.drawable.ic_lightmode);
-            View header = navigationView.getHeaderView(0);
+            //View header = navigationView.getHeaderView(0);
             //header.findViewById(R.id.imageView).setVisibility(View.INVISIBLE);
-            header.findViewById(R.id.imageView2).setVisibility(View.VISIBLE);
+            //header.findViewById(R.id.imageView2).setVisibility(View.VISIBLE);
 
         }
         else {
