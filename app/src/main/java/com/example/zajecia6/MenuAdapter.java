@@ -78,6 +78,7 @@ public class MenuAdapter extends ArrayAdapter<MenuItem> {
                         });
             }
         });
+
         return view;
     }
 

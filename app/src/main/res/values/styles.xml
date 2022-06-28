@@ -24,6 +24,12 @@
         <item name="android:textSize">30sp</item>
     </style>
 
+    <style name="primary_text_white" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">@color/white</item>
+        <item name="fontFamily">@font/customfont</item>
+        <item name="android:textSize">30sp</item>
+    </style>
+
     <style name="ToolbarYellowIcon" parent="Theme.AppCompat">
         <item name="android:textColorSecondary">@color/yellow</item>
     </style>
