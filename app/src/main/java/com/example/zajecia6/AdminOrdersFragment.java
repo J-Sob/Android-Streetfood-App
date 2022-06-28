@@ -49,14 +49,12 @@ public class AdminOrdersFragment extends Fragment {
         dao.getAllOrders(new OrdersRetrievedCallback() {
             @Override
             public void onOrdersRetrieved(List<OrderModel> orderList) {
-                System.out.println("before sort" + orderList);
                 orderList.sort(new Comparator<OrderModel>() {
                     @Override
                     public int compare(OrderModel o1, OrderModel o2) {
                         return o1.getOrderStatus().compareTo(o2.getOrderStatus());
                     }
                 });
-                System.out.println("after sort" + orderList);
                 AdminOrdersAdapter adapter = new AdminOrdersAdapter(getContext(), orderList);
                 adminOrders.setAdapter(adapter);
             }

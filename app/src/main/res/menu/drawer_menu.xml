@@ -15,7 +15,12 @@
         android:title="Panel admina"
         android:visible="false"/>
     <item
-        android:id="@+id/order"
+        android:id="@+id/orderList"
+        android:icon="@drawable/ic_orders_list"
+        android:title="Zamówienia"
+        android:visible="false"/>
+    <item
+        android:id="@+id/placeOrder"
         android:icon="@drawable/ic_order"
         android:title="Złóż zamówienie" />
     <item

@@ -57,18 +57,20 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         Menu menu = navigationView.getMenu();
         if(mAuth.getCurrentUser() == null){
             menu.getItem(1).setTitle("Zaloguj się lub utwórz konto");
+            menu.getItem(3).setVisible(false);
         }else{
             menu.getItem(1).setTitle("Twoje konto");
+            menu.getItem(3).setVisible(true);
             dao.getUserById(mAuth.getCurrentUser().getUid(), new UserRetrievedCallback() {
                 @Override
                 public void onUserRetrieved(User user) {
                     if(user.isAdmin()){
                         menu.getItem(2).setVisible(true);
-                        menu.getItem(3).setTitle("Zamówienia");
+                        menu.getItem(4).setVisible(false);
                         isAdmin = true;
                     }else{
                         menu.getItem(2).setVisible(false);
-                        menu.getItem(3).setTitle("Złóż zamówienie");
+                        menu.getItem(4).setVisible(true);
                         isAdmin = false;
                     }
                 }
@@ -130,11 +132,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.admin:
                 getSupportFragmentManager().beginTransaction().replace(R.id.Fragment_container,new AdminFragment()).commit();
                 break;
-            case R.id.order:
+            case R.id.placeOrder:
                 if(!isAdmin){
                     getSupportFragmentManager().beginTransaction().replace(R.id.Fragment_container,new NewOrderFragment()).commit();
-                }else{
+                }
+                break;
+            case R.id.orderList:
+                if(isAdmin){
                     getSupportFragmentManager().beginTransaction().replace(R.id.Fragment_container,new AdminOrdersFragment()).commit();
+                }else{
+                    getSupportFragmentManager().beginTransaction().replace(R.id.Fragment_container,new UsersOrdersFragment()).commit();
                 }
                 break;
         }

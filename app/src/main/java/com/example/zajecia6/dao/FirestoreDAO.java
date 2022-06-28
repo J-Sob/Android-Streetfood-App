@@ -273,4 +273,26 @@ public class FirestoreDAO {
                     }
                 });
     }
+
+    public void getUsersOrders(String id, OrdersRetrievedCallback callback){
+        firebaseFirestore.collection("orders")
+                .whereEqualTo("userId", id)
+                .get()
+                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                    @Override
+                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                        List<OrderModel> orderList = new ArrayList<>();
+                        for(QueryDocumentSnapshot documentSnapshot : queryDocumentSnapshots){
+                            orderList.add(documentSnapshot.toObject(OrderModel.class));
+                        }
+                        callback.onOrdersRetrieved(orderList);
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(context, e.getMessage(), Toast.LENGTH_LONG).show();
+                    }
+                });
+    }
 }
