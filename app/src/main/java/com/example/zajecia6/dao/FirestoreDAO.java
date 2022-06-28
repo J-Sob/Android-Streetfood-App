@@ -49,6 +49,27 @@ public class FirestoreDAO {
                 });
     }
 
+    public void deleteUser(String id){
+        firebaseFirestore.collection("users")
+                .document(id)
+                .delete()
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void unused) {
+                        Toast.makeText(context, "Użytkownik usunięty z bazy", Toast.LENGTH_SHORT).show();
+
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(context, e.getMessage(), Toast.LENGTH_LONG).show();
+                    }
+                });
+
+    }
+
+
     public void getUserById(String id, UserRetrievedCallback callback){
         DocumentReference dbRef = firebaseFirestore.collection("users").document(id);
         dbRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {

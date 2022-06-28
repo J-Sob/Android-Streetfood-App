@@ -135,6 +135,23 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <Button
+            android:id="@+id/btn_delete"
+            android:layout_width="160dp"
+            android:layout_height="54dp"
+            android:layout_marginTop="84dp"
+            android:background="@color/colorAccent"
+            android:text="Usuń konto"
+            android:textAllCaps="false"
+            android:textAppearance="@style/primary_text_darkblue"
+            android:textColor="@android:color/background_light"
+            android:visibility="invisible"
+            app:backgroundTint="@android:color/holo_red_light"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/buttonLogout" />
+
         <ProgressBar
             android:id="@+id/progressBarProfile"
             style="?android:attr/progressBarStyle"

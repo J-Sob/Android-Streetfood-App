@@ -1,6 +1,8 @@
 package com.example.zajecia6;
 
+import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -19,11 +21,14 @@ import android.widget.Toast;
 import com.example.zajecia6.callback.UserRetrievedCallback;
 import com.example.zajecia6.dao.FirestoreDAO;
 import com.example.zajecia6.model.User;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.EmailAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class ProfileFragment extends Fragment {
 
@@ -34,6 +39,7 @@ public class ProfileFragment extends Fragment {
     private Button buttonEdit;
     private Button buttonChangePassword;
     private Button buttonLogout;
+    private Button buttonDelete;
     private ProgressBar spinner;
     private FirebaseAuth mAuth;
     private FirestoreDAO dao;
@@ -50,6 +56,7 @@ public class ProfileFragment extends Fragment {
         buttonEdit = view.findViewById(R.id.buttonEdit);
         buttonChangePassword = view.findViewById(R.id.buttonChangePassword);
         buttonLogout = view.findViewById(R.id.buttonLogout);
+        buttonDelete = view.findViewById(R.id.btn_delete);
         spinner = view.findViewById(R.id.progressBarProfile);
         mAuth = FirebaseAuth.getInstance();
         dao = new FirestoreDAO(getContext());
@@ -62,6 +69,9 @@ public class ProfileFragment extends Fragment {
                 editTextPhone.setText(user.getPhoneNumber());
                 isAdmin = user.isAdmin();
                 spinner.setVisibility(View.GONE);
+                if(isAdmin == false){
+                    buttonDelete.setVisibility(View.VISIBLE);
+                }
             }
         });
 
@@ -114,8 +124,53 @@ public class ProfileFragment extends Fragment {
                 showChangePasswordDialog();
             }
         });
+
+
+        buttonDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (isAdmin == true){
+                    Toast.makeText(ProfileFragment.this.getContext(), "Nie możesz usunąć konta Admina", Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    FirebaseUser user = mAuth.getCurrentUser();
+                    String userID = user.getUid();
+                    AlertDialog.Builder alert = new AlertDialog.Builder(ProfileFragment.this.getContext());
+                    alert.setMessage("Usunąć " + mAuth.getCurrentUser().getEmail() + "?");
+                    alert.setCancelable(false);
+                    alert.setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            user.delete()
+                                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                        public void onComplete(@NonNull Task<Void> task) {
+                                            if (task.isSuccessful()) {
+                                                Toast.makeText(ProfileFragment.this.getContext(), "Użytkownik usunięty", Toast.LENGTH_SHORT).show();
+                                                dao.deleteUser(userID);
+                                                Intent intent = new Intent(ProfileFragment.this.getContext(), MainActivity.class);
+                                                startActivity(intent);
+                                            } else {
+                                                Toast.makeText(ProfileFragment.this.getContext(), task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                                            }
+
+                                        }
+                                    });
+                        }
+                    });
+                    alert.setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            dialogInterface.dismiss();
+                        }
+                    });
+                    alert.show();
+                }
+            }
+        });
         return view;
+
     }
+
 
     void showChangePasswordDialog(){
         final Dialog dialog = new Dialog(getContext());
