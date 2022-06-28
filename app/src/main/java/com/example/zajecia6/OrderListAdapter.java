@@ -13,7 +13,6 @@ import androidx.annotation.Nullable;
 
 import com.example.zajecia6.callback.OrderChangedCallback;
 import com.example.zajecia6.model.MenuItem;
-import com.example.zajecia6.model.Order;
 
 import java.util.List;
 
@@ -42,6 +41,13 @@ public class OrderListAdapter extends ArrayAdapter<MenuItem> {
         TextView quantity = view.findViewById(R.id.textViewQuantity);
         Button plus = view.findViewById(R.id.buttonPlus);
         Button minus = view.findViewById(R.id.buttonMinus);
+
+
+        if(!items.get(position).isAvailable()){
+            plus.setVisibility(View.GONE);
+            minus.setVisibility(View.GONE);
+            quantity.setText("Niedostępne");
+        }
 
         itemName.setText(items.get(position).getName() + " " + Double.toString(items.get(position).getPrice()) + " zł");
 

@@ -4,27 +4,26 @@ import com.google.firebase.firestore.DocumentReference;
 
 import java.util.List;
 
-public class Order {
+public class OrderModel {
     private String id;
     private String userId;
     private String phoneNumber;
     private String address;
     private String additionalInfo;
-    private List<DocumentReference> items;
+    private List<String> items;
     private OrderStatus orderStatus;
     private double totalPrice;
 
-    public Order() {
-    }
+    public OrderModel() {}
 
-    public Order(String id,
-                 String userId,
-                 String phoneNumber,
-                 String address,
-                 String additionalInfo,
-                 List<DocumentReference> items,
-                 OrderStatus orderStatus,
-                 double totalPrice) {
+    public OrderModel(String id,
+                      String userId,
+                      String phoneNumber,
+                      String address,
+                      String additionalInfo,
+                      List<String> items,
+                      OrderStatus orderStatus,
+                      double totalPrice) {
         this.id = id;
         this.userId = userId;
         this.phoneNumber = phoneNumber;
@@ -75,11 +74,11 @@ public class Order {
         this.additionalInfo = additionalInfo;
     }
 
-    public List<DocumentReference> getItems() {
+    public List<String> getItems() {
         return items;
     }
 
-    public void setItems(List<DocumentReference> items) {
+    public void setItems(List<String> items) {
         this.items = items;
     }
 

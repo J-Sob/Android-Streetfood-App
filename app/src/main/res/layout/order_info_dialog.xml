@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:padding="20dp"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@color/darkBlue">
+
+    <TextView
+        android:id="@+id/textView32"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/logo_text_style"
+        android:text="Informacje o zamówieniu"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textView33"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:padding="5dp"
+
+            android:text="Numer zamówienia: "
+            android:textAppearance="@style/primary_text_yellow" />
+
+        <TextView
+            android:id="@+id/textViewOrderInfoId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:padding="5dp"
+            android:text=""
+            android:textAppearance="@style/primary_text_white" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/textView34"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:padding="5dp"
+
+            android:text="Adres: "
+            android:textAppearance="@style/primary_text_yellow" />
+
+        <TextView
+            android:id="@+id/textViewOrderInfoAddress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:padding="5dp"
+            android:text=""
+            android:textAppearance="@style/primary_text_white" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/textView36"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:padding="5dp"
+
+            android:text="Numer telefonu: "
+            android:textAppearance="@style/primary_text_yellow" />
+
+        <TextView
+            android:id="@+id/textViewOrderInfoPhone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:padding="5dp"
+            android:text=""
+            android:textAppearance="@style/primary_text_white" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/textView35"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:padding="5dp"
+
+            android:text="Cena: "
+            android:textAppearance="@style/primary_text_yellow" />
+
+        <TextView
+            android:id="@+id/textViewOrderInfoTotal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:padding="5dp"
+            android:text=""
+            android:textAppearance="@style/primary_text_white" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textView37"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:padding="5dp"
+            android:text="Zamówienie: "
+            android:textAppearance="@style/primary_text_yellow" />
+
+        <TextView
+            android:id="@+id/textViewOrderInfoNames"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:padding="5dp"
+            android:text=""
+            android:textAppearance="@style/primary_text_white" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textView38"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:padding="5dp"
+
+            android:text="Dodatkowe informacje: "
+            android:textAppearance="@style/primary_text_yellow" />
+
+        <TextView
+            android:id="@+id/textViewOrderInfoAdditional"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:padding="5dp"
+            android:text=""
+            android:textAppearance="@style/primary_text_white" />
+
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/buttonCloseInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:layout_margin="20dp"
+        android:layout_marginTop="24dp"
+        android:backgroundTint="@color/yellow"
+        android:enabled="true"
+        android:text="Zamknij"
+        android:textAppearance="@style/primary_text_darkblue"
+        android:textColor="#455A64" />
+
+
+</androidx.appcompat.widget.LinearLayoutCompat>

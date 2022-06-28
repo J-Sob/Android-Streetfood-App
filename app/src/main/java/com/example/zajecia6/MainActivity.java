@@ -11,21 +11,33 @@ import android.content.Context;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
 
 import com.example.zajecia6.callback.UserRetrievedCallback;
 import com.example.zajecia6.dao.FirestoreDAO;
 import com.example.zajecia6.model.User;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.paypal.checkout.PayPalCheckout;
+import com.paypal.checkout.config.CheckoutConfig;
+import com.paypal.checkout.config.Environment;
+import com.paypal.checkout.config.PaymentButtonIntent;
+import com.paypal.checkout.config.SettingsConfig;
+import com.paypal.checkout.createorder.CurrencyCode;
+import com.paypal.checkout.createorder.UserAction;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
+    private static final String CLIENT_ID = "AQj0rNtsiCUqL60xBGt0djDD2CYXLY6KXMIpdsLJ5TBUYxxxmEHdKgxk4RiBhOjh064PEnPNmUQaGmgK";
+    private static final String RETURN_URL = "com.example.project://paypalpay";
     public static String PACKAGE_NAME;
     private static Context context;
+    private boolean isAdmin;
 
     private DrawerLayout drawerLayout;
     private FirebaseAuth mAuth;
     private FirestoreDAO dao;
+    
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,9 +65,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     if(user.isAdmin()){
                         menu.getItem(2).setVisible(true);
                         menu.getItem(3).setTitle("Zamówienia");
+                        isAdmin = true;
                     }else{
                         menu.getItem(2).setVisible(false);
                         menu.getItem(3).setTitle("Złóż zamówienie");
+                        isAdmin = false;
                     }
                 }
             });
@@ -70,6 +84,23 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     new HomeFragment()).commit();
             navigationView.setCheckedItem(R.id.home);
         }
+
+        //Paypal config
+        CheckoutConfig checkoutConfig = new CheckoutConfig(
+                this.getApplication(),
+                CLIENT_ID,
+                Environment.SANDBOX,
+                RETURN_URL,
+                CurrencyCode.PLN,
+                UserAction.PAY_NOW,
+                PaymentButtonIntent.CAPTURE,
+                new SettingsConfig(
+                        true,
+                        false
+                )
+        );
+
+        PayPalCheckout.setConfig(checkoutConfig);
 
     }
 
@@ -100,10 +131,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 getSupportFragmentManager().beginTransaction().replace(R.id.Fragment_container,new AdminFragment()).commit();
                 break;
             case R.id.order:
-                if("Złóż zamówienie".equals(item.getTitle().toString())){
+                if(!isAdmin){
                     getSupportFragmentManager().beginTransaction().replace(R.id.Fragment_container,new NewOrderFragment()).commit();
                 }else{
-
+                    getSupportFragmentManager().beginTransaction().replace(R.id.Fragment_container,new AdminOrdersFragment()).commit();
                 }
                 break;
         }

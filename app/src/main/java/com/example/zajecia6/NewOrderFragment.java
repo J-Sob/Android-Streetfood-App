@@ -6,8 +6,6 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -21,19 +19,34 @@ import com.example.zajecia6.callback.OrderPlacedCallback;
 import com.example.zajecia6.callback.UserRetrievedCallback;
 import com.example.zajecia6.dao.FirestoreDAO;
 import com.example.zajecia6.model.MenuItem;
-import com.example.zajecia6.model.Order;
+import com.example.zajecia6.model.OrderModel;
 import com.example.zajecia6.model.OrderStatus;
 import com.example.zajecia6.model.User;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
-import com.google.android.gms.wallet.IsReadyToPayRequest;
-import com.google.android.gms.wallet.PaymentsClient;
-import com.google.android.gms.wallet.Wallet;
-import com.google.android.gms.wallet.WalletConstants;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
+import com.paypal.checkout.approve.Approval;
+import com.paypal.checkout.approve.OnApprove;
+import com.paypal.checkout.cancel.OnCancel;
+import com.paypal.checkout.createorder.CreateOrder;
+import com.paypal.checkout.createorder.CreateOrderActions;
+import com.paypal.checkout.createorder.CurrencyCode;
+import com.paypal.checkout.createorder.OrderIntent;
+import com.paypal.checkout.createorder.UserAction;
+import com.paypal.checkout.error.ErrorInfo;
+import com.paypal.checkout.error.OnError;
+import com.paypal.checkout.order.Amount;
+import com.paypal.checkout.order.AppContext;
+import com.paypal.checkout.order.CaptureOrderResult;
+import com.paypal.checkout.order.OnCaptureComplete;
+import com.paypal.checkout.order.Order;
+import com.paypal.checkout.order.PurchaseUnit;
+import com.paypal.checkout.paymentbutton.PayPalButton;
+import com.paypal.checkout.shipping.OnShippingChange;
+import com.paypal.checkout.shipping.ShippingChangeActions;
+import com.paypal.checkout.shipping.ShippingChangeData;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,7 +60,7 @@ public class NewOrderFragment extends Fragment {
     private TextView sum;
     private TextView deliveryPrice;
     private TextView totalPrice;
-    private Button placeOrder;
+    private PayPalButton payPalButton;
     private FirestoreDAO dao;
     private FirebaseAuth mAuth;
     private List<MenuItem> items;
@@ -64,8 +77,7 @@ public class NewOrderFragment extends Fragment {
         sum = view.findViewById(R.id.textViewSum);
         deliveryPrice = view.findViewById(R.id.textViewDelivery);
         totalPrice = view.findViewById(R.id.textViewTotalPrice);
-        placeOrder = view.findViewById(R.id.buttonPlaceOrder);
-
+        payPalButton = view.findViewById(R.id.payPalButton);
 
         items = new ArrayList<>();
 
@@ -105,7 +117,7 @@ public class NewOrderFragment extends Fragment {
                         double newSum = Double.parseDouble(sum.getText().toString()) + item.getPrice();
                         sum.setText(Double.toString(newSum));
                         double newTotal = newSum + Double.parseDouble(deliveryPrice.getText().toString());
-                        totalPrice.setText(Double.toString(newTotal));
+                        totalPrice.setText(String.format("%.2f", newTotal));
                     }
 
                     @Override
@@ -116,7 +128,7 @@ public class NewOrderFragment extends Fragment {
                         double newSum = Double.parseDouble(sum.getText().toString()) - item.getPrice();
                         sum.setText(Double.toString(newSum));
                         double newTotal = newSum + Double.parseDouble(deliveryPrice.getText().toString());
-                        totalPrice.setText(Double.toString(newTotal));
+                        totalPrice.setText(String.format("%.2f", newTotal));
                     }
                 });
                 menuList.setAdapter(orderListAdapter);
@@ -134,50 +146,93 @@ public class NewOrderFragment extends Fragment {
             });
         }
 
-        placeOrder.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(address.getText().toString().equals("") ||
-                    phoneNumber.getText().toString().equals("")){
-                    Toast.makeText(NewOrderFragment.this.getContext(), "Pola adres i numer telefonu są wymagane", Toast.LENGTH_SHORT).show();
-                }else if(items.size() == 0){
-                    Toast.makeText(NewOrderFragment.this.getContext(), "Dodaj pozycję do zamówienia", Toast.LENGTH_SHORT).show();
-                }else if(phoneNumber.getText().toString().length() != 9){
-                    Toast.makeText(NewOrderFragment.this.getContext(), "Nieprawidłowy numer telefonu", Toast.LENGTH_SHORT).show();
-                }else{
-                    placeNewOrder();
+        payPalButton.setup(
+                new CreateOrder() {
+                    @Override
+                    public void create(@NotNull CreateOrderActions createOrderActions) {
+                        ArrayList<PurchaseUnit> purchaseUnits = new ArrayList<>();
+                        purchaseUnits.add(
+                                new PurchaseUnit.Builder()
+                                        .amount(
+                                                new Amount.Builder()
+                                                        .currencyCode(CurrencyCode.PLN)
+                                                        .value(totalPrice.getText().toString())
+                                                        .build()
+                                        )
+                                        .build()
+                        );
+                        Order order = new Order.Builder()
+                                .appContext(new AppContext.Builder()
+                                        .userAction(UserAction.PAY_NOW)
+                                        .build())
+                                .intent(OrderIntent.CAPTURE)
+                                .purchaseUnitList(purchaseUnits)
+                                .build();
+                        createOrderActions.create(order, (CreateOrderActions.OnOrderCreated) null);
+                    }
+                },
+                new OnApprove() {
+                    @Override
+                    public void onApprove(@NotNull Approval approval) {
+                        approval.getOrderActions().capture(new OnCaptureComplete() {
+                            @Override
+                            public void onCaptureComplete(@NotNull CaptureOrderResult result) {
+                                placeNewOrder();
+                            }
+                        });
+                    }
+                },
+                new OnShippingChange() {
+                    @Override
+                    public void onShippingChanged(@NonNull ShippingChangeData shippingChangeData, @NonNull ShippingChangeActions shippingChangeActions) {
+
+                    }
+                },
+                new OnCancel() {
+                    @Override
+                    public void onCancel() {
+                        Toast.makeText(getContext(), "Płatność przerwana", Toast.LENGTH_SHORT).show();
+                    }
+                },
+                new OnError() {
+                    @Override
+                    public void onError(@NonNull ErrorInfo errorInfo) {
+                        placeNewOrder();
+                        Toast.makeText(getContext(), "Błąd płatności", Toast.LENGTH_SHORT).show();
+                    }
                 }
-            }
-        });
+        );
 
         return view;
     }
 
+
     private void placeNewOrder(){
         FirebaseUser currentUser = mAuth.getCurrentUser();
         FirestoreDAO dao = new FirestoreDAO(NewOrderFragment.this.getContext());
-        Order newOrder = new Order();
-        List<DocumentReference> docRefs = new ArrayList<>();
+        OrderModel newOrderModel = new OrderModel();
+        List<String> itemList = new ArrayList<>();
         for(MenuItem i : items){
-            docRefs.add(dao.getFirebaseFirestore().collection("menuItems").document(i.getId()));
+            itemList.add(i.getId());
         }
         if(currentUser != null){
-            newOrder.setUserId(currentUser.getUid());
+            newOrderModel.setUserId(currentUser.getUid());
         }
-        newOrder.setAddress(address.getText().toString());
-        newOrder.setAdditionalInfo(additionalInfo.getText().toString());
-        newOrder.setPhoneNumber(phoneNumber.getText().toString());
-        newOrder.setOrderStatus(OrderStatus.PENDING);
-        newOrder.setItems(docRefs);
-        newOrder.setTotalPrice(Double.parseDouble(totalPrice.getText().toString()));
+        newOrderModel.setAddress(address.getText().toString());
+        newOrderModel.setAdditionalInfo(additionalInfo.getText().toString());
+        newOrderModel.setPhoneNumber(phoneNumber.getText().toString());
+        newOrderModel.setOrderStatus(OrderStatus.PENDING);
+        newOrderModel.setItems(itemList);
+        newOrderModel.setTotalPrice(Double.parseDouble(totalPrice.getText().toString()));
 
-        dao.addOrder(newOrder, new OrderPlacedCallback() {
+        dao.addOrder(newOrderModel, new OrderPlacedCallback() {
             @Override
             public void onOrderPlaced() {
                 Toast.makeText(NewOrderFragment.this.getContext(), "Pomyślnie złożono zamówienie", Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(NewOrderFragment.this.getContext(), MainActivity.class));
             }
         });
+
 
     }
 

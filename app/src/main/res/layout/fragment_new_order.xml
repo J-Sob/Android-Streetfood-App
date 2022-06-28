@@ -229,18 +229,13 @@
 
             </LinearLayout>
 
-            <Button
-                android:id="@+id/buttonPlaceOrder"
-                android:layout_width="wrap_content"
-                android:layout_height="54dp"
-                android:layout_marginTop="20dp"
-                android:layout_gravity="center"
-                android:layout_marginBottom="20dp"
-                android:background="@color/yellow"
-                android:text="Złóż zamówienie"
-                android:textAppearance="@style/primary_text_darkblue"
-                android:textColor="#455A64"
-                app:backgroundTint="@color/yellow" />
+            <com.paypal.checkout.paymentbutton.PayPalButton
+                android:id="@+id/payPalButton"
+                android:layout_width="match_parent"
+                android:layout_marginLeft="60dp"
+                android:layout_marginRight="60dp"
+                android:layout_marginBottom="30dp"
+                android:layout_height="wrap_content"/>
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
